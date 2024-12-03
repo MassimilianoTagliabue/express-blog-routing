@@ -14,9 +14,21 @@ router.get("/", (req,res) => {
 //show
 router.get("/:id", (req,res) =>{
 
-    const postid = req.params.id;
-    res.json("leggiamo l'elemento con id " +postid );
+    const postid = parseInt(req.params.id);
 
+   // res.json("leggiamo l'elemento con id " +postid );
+   const result = postList.map( curItem =>{
+
+         if(curItem.id=== postid){
+            
+            return curItem
+        };
+    
+   });
+   res.send(result);
+   
+
+   res.json(postList[0]);
 });
 
 //create
